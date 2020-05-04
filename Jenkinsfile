@@ -19,12 +19,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m pytest --junit-xml test-reports/results.xml UnitTestRuleBook.py'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
+                sh 'python UnitTestRuleBook.py'
+                sh 'python UnitTestPlayer.py'
+                sh 'python UnitTestDeck.py'
+                sh 'python UnitTestDealer.py'
+                sh 'python IntegrationTests.py'
             }
         }
     }
