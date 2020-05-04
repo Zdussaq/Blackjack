@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'Python UnitTestRuleBook.py'
+                sh 'python UnitTestRuleBook.py'
             }
             post {
                 always {
