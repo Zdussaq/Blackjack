@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 --junit-xml test-reports/results.xml UnitTestRuleBook.py'
+                sh 'py.test --junit-xml test-reports/results.xml UnitTestRuleBook.py'
             }
             post {
                 always {
