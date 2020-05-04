@@ -68,7 +68,7 @@ class Rulebook:
                 ace_low_val += 10
             else:
                 parseVal = int(cards[i])
-                if (parseVal < 2 or parseVal > 9):
+                if (parseVal < 2 or parseVal > 10):
                     raise ValueError("Bad or inccorect card value passed.")
                 ace_high_val += parseVal
                 ace_low_val += parseVal
