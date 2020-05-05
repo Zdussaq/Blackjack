@@ -23,11 +23,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'python sources/UnitTestRuleBook.py'
-                sh 'python sources/UnitTestPlayer.py'
-                sh 'python sources/UnitTestDeck.py'
-                sh 'python sources/UnitTestDealer.py'
-                sh 'python sources/IntegrationTests.py'
+                sh 'coverage run -m unittest discover -s sources'
+                sh 'coverage report'
             }
         }
         stage('Deliver') { 
