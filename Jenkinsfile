@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker{
-            image 'python:3.8.2-apline3.11'
+            image 'python:3.8.2-alpine3.11'
         }
     }
     stages {
@@ -21,13 +21,11 @@ pipeline {
                 docker {
                     image 'python:latest' 
                 }
+                
             }
             steps {
-                sh 'python sources/UnitTestRuleBook.py'
-                sh 'python sources/UnitTestPlayer.py'
-                sh 'python sources/UnitTestDeck.py'
-                sh 'python sources/UnitTestDealer.py'
-                sh 'python sources/IntegrationTests.py'
+                sh 'coverage run -m unittest discover -s sources'
+                sh 'coverage report'
             }
         }
         stage('Deliver') { 
