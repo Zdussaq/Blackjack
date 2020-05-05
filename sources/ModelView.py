@@ -18,7 +18,7 @@ class ModelView:
         print(printstr)
         printstr = ""
         for i in range(deal_len):
-            if i is 0 and dealer_hand_hidden:
+            if i == 0 and dealer_hand_hidden:
                 printstr += "|   |  "
             else:
                 printstr += "| " + str(dealer_hand[i]) + " |  "

@@ -49,21 +49,21 @@ class Rulebook:
         ace_low_val = 0
         ace_high_val = 0
         for i in range(len(cards)):
-            if i is 0 and dealer_card_hidden:
+            if i == 0 and dealer_card_hidden:
                 continue
-            elif cards[i] is 'A':
+            elif cards[i] == 'A':
                 ace_high_val += 11
                 ace_low_val += 1
-            elif cards[i] is 'J':
+            elif cards[i] == 'J':
                 ace_high_val += 10
                 ace_low_val += 10
-            elif cards[i] is 'Q':
+            elif cards[i] == 'Q':
                 ace_high_val += 10
                 ace_low_val += 10
-            elif cards[i] is 'K':
+            elif cards[i] == 'K':
                 ace_high_val += 10
                 ace_low_val += 10
-            elif cards[i] is 'J':
+            elif cards[i] == 'J':
                 ace_high_val += 10
                 ace_low_val += 10
             else:

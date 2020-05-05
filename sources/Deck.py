@@ -12,7 +12,7 @@ class Deck:
 
     #Will return one random card from the deck
     def draw_card(self) -> str:
-        if len(self.__cards) is 0:
+        if len(self.__cards) == 0:
             raise IndexError("Out of cards!")
         return self.__cards.pop(random.randint(0, len(self.__cards) - 1))
         
