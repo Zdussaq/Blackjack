@@ -26,21 +26,21 @@ pipeline {
                 sh 'python sources/IntegrationTests.py'
             }
         }
-        stage('Deliver') {
+        stage('Deliver') { 
             agent any
-            environment {
+            environment { 
                 VOLUME = '$(pwd)/sources:/src'
                 IMAGE = 'cdrx/pyinstaller-linux:python3'
             }
             steps {
-                dir(path: env.BUILD_ID) {
-                    unstash(name: 'compiled-results')
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F Dealer.py'"
+                dir(path: env.BUILD_ID) { 
+                    unstash(name: 'compiled-results') 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F Dealer.py'" 
                 }
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/sources/dist/blackjack"
+                    archiveArtifacts "${env.BUILD_ID}/sources/dist/Dealer" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
