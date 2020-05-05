@@ -21,6 +21,8 @@ pipeline {
             }
             steps {
                 sh """
+                virtualenv myenv
+                source myenv/bin/activate
                 pip install coverage
                 coverage run -m unittest discover -s sources
                 coverage report
