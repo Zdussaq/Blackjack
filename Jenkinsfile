@@ -42,9 +42,14 @@ pipeline {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/Dealer" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-                    sh "docker push zdussaq/blackjack"
                 }
             }
         }
+        stage('Push image') {
+            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+}
     }
 }
