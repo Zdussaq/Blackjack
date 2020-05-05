@@ -1,5 +1,9 @@
 pipeline {
-    agent none 
+    agent {
+        docker{
+            image 'python:3.8.2-apline3.11'
+        }
+    }
     stages {
         stage('Build') {
             agent {
