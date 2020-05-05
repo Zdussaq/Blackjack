@@ -8,8 +8,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m py_compile Dealer.py Deck.py ModelView.py Player.py RuleBook.py'
-                stash(name: 'compiled-results', includes: '*.py*')
+                sh 'python -m py_compile sources/Dealer.py sources/Deck.py sources/ModelView.py sources/Player.py sources/RuleBook.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
         stage('Test') { 
@@ -19,17 +19,17 @@ pipeline {
                 }
             }
             steps {
-                sh 'python UnitTestRuleBook.py'
-                sh 'python UnitTestPlayer.py'
-                sh 'python UnitTestDeck.py'
-                sh 'python UnitTestDealer.py'
-                sh 'python IntegrationTests.py'
+                sh 'python sources/UnitTestRuleBook.py'
+                sh 'python sources/UnitTestPlayer.py'
+                sh 'python sources/UnitTestDeck.py'
+                sh 'python sources/UnitTestDealer.py'
+                sh 'python sources/IntegrationTests.py'
             }
         }
         stage('Deliver') {
             agent any
             environment {
-                VOLUME = '$(pwd)/'
+                VOLUME = '$(pwd)/sources:/src'
                 IMAGE = 'cdrx/pyinstaller-linux:python3'
             }
             steps {
