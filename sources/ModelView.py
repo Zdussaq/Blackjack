@@ -57,3 +57,4 @@ class ModelView:
             printstr += "-----  "
         print(printstr)
         print(custom_message)
+        
