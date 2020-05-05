@@ -20,8 +20,12 @@ pipeline {
                 
             }
             steps {
-                sh 'coverage run -m unittest discover -s sources'
-                sh 'coverage report'
+                sh """
+                . .env/bin/activate
+                pip install coverage
+                coverage run -m unittest discover -s sources
+                coverage report
+                """
             }
         }
         stage('Deliver') { 
