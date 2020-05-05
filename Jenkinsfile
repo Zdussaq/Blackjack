@@ -21,7 +21,6 @@ pipeline {
             }
             steps {
                 sh """
-                . .env/bin/activate
                 pip install coverage
                 coverage run -m unittest discover -s sources
                 coverage report
