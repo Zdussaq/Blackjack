@@ -28,6 +28,7 @@ class ModelView:
             printstr += "|   |  "
         print(printstr)
         printstr = ""
+        
         for i in range(deal_len):
             printstr += "-----  "
         print(printstr)
